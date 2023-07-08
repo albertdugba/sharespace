@@ -4,15 +4,34 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky install",
+    "pre-commit": "pnpm run lint && pnpm run format"
   },
   "devDependencies": {
     "@turbo/gen": "^1.9.7",
-    "eslint": "^7.32.0",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
+    "eslint": "8.32.0",
     "eslint-config-custom": "workspace:*",
+    "eslint-config-next": "13.1.5",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
     "prettier": "^2.5.1",
-    "turbo": "latest"
+    "turbo": "latest",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3"
+  },
+  "lint-staged": {
+    "apps/**/*.{ts,tsx,js,jsx}": [
+      "pnpm run pre-commit"
+    ]
   },
   "packageManager": "pnpm@7.15.0",
-  "name": "sharespace"
+  "name": "sharespace",
+  "dependencies": {
+    "next": "^13.4.3"
+  }
 }
